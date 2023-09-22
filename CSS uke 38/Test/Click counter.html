@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Click counter.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click counter</title>
+    <script>
+
+        var clicker = {
+        generics:0,
+        upgrades: {
+generic_machine:{
+    amount:0,
+    cost:10,
+    gps:1,
+    name:"Auto klikkere"
+},
+generic_factory:{
+    amount:0,
+    cost:100,
+    gps:10,
+    name:"Super auto klikkere"
+},
+generic_city:{
+    amount:0,
+    cost:250,
+    gps:25,
+    name:"Ultra auto klikkere"
+},
+generic_ultimate:{
+    amount:0,
+    cost:1000,
+    gps:100,
+    name:"Ultimate auto klikkere"
+},
+generic_best:{
+    amount:0,
+    cost:10000,
+    gps:1000,
+    name:"Beste auto klikkere"
+},
+generic_hacker:{
+    amount:0,
+    cost:100000,
+    gps:10000,
+    name:"Hacker auto klikkere"
+},
+generic_troll:{
+    amount:0,
+    cost:1000000,
+    gps:100000,
+    name:"Jacob auto klikkere"
+}
+        }
+        };
+
+
+
+        function thing_clicked(thing){
+            if(clicker.upgrades[thing].cost <= clicker.generics){
+                clicker.generics-= clicker.upgrades[thing].cost;
+            clicker.upgrades[thing].amount++;
+            clicker.upgrades[thing].cost += Math.round(clicker.upgrades[thing].cost*0.1);
+            update_upgrades();
+            }
+        }
+
+        function update_upgrades(){
+            document.querySelector("#upgrades").innerHTML="";
+            for(i in clicker.upgrades){
+                document.querySelector("#upgrades").innerHTML+= `<br> <button onclick="thing_clicked('${i}')">${clicker.upgrades[i].name}</button> Du har ${clicker.upgrades[i].amount}. Pris: ${clicker.upgrades[i].cost}`;
+            }
+
+        }
+
+        function updatecount(){
+            update_upgrades();
+            setInterval(() => {
+                for(i in clicker.upgrades){
+                    clicker.generics+=clicker.upgrades[i].amount*clicker.upgrades[i].gps/20
+                }
+
+                document.querySelector("#generics").innerHTML = "Du har "+String(clicker.generics).split(".")[0]+" klikk"
+            },50);
+        }
+
+    </script>
+</head>
+<body onload="updatecount()">
+<h1 id="generics">Du har 0 klikk</h1>
+
+<Div class="knapp">
+
+<button onclick="clicker.generics++">+1 klikk</button>
+
+</div>
+
+<div id="upgrades">
+
+</div>
+
+
+
+</input>
+</body>
+</html>

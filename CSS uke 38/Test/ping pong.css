@@ -1,0 +1,43 @@
+
+
+
+@keyframes bouncingBallAnimation{  
+    from { transform: translate3d(0, 0, 0);}  
+    to { transform: translate3d(0, 205px, 0);}  
+}
+
+
+img{    
+  
+/*Some statements?*/
+
+    animation: bounce 0.5s;  
+    animation-direction: alternate;  
+    animation-iteration-count: infinite;  
+}
+
+img{  
+    /*other statements*/  
+  
+    animation: bounce 0.5s cubic-bezier(0.5, 0.05, 1, 0.5);  
+}
+
+
+img{
+    body {  
+        display: flex;  
+        justify-content: center;  
+        align-items: center;  
+    }  
+      
+    .shape {  
+        width: 80px;  
+        height: 80px;  
+        background-color: #34e000;  
+        border-radius: 50%;  
+        animation: bouncingBallAnimation 0.8s;  
+        animation-direction: alternate;  
+        animation-timing-function: cubic-bezier(.4, 0.06, 1, .6);  
+        animation-iteration-count: infinite;  
+    }  
+}
